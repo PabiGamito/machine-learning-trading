@@ -38,7 +38,9 @@ client.search("bitcoin", until: "2016-10-15", lang: "en", result_type: "popular"
   puts "SENTIMENT: #{setiment}"
   total_sentiment += setiment
 end
-puts "Average Sentiment: #{total_sentiment/total_tweets}"
+avg_sentiment = total_sentiment/total_tweets
+puts "Average Sentiment: #{avg_sentiment}"
+File.open("data_set.json", 'w') { |file| file.write(avg_sentiment) }
 
 # Stream mentions of coffee or tea
 # client = Twitter::Streaming::Client.new do |config|
